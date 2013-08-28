@@ -1,0 +1,3 @@
+strings
+string
+tests
