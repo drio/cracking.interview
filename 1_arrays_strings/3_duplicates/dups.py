@@ -41,7 +41,10 @@ def tester(s, truth_i, truth_s):
   assert(cleaned == truth_s)
 
 # Main
+tester("abcd", [], "abcd")
 tester("AbcAde", [3], "Abcde")
 tester("david", [4], "davi")
 tester("FFo", [1], "Fo")
 tester("davdd", [3,4], "dav")
+tester("aaaa", [1,2,3], "a")
+tester("aaabbb", [1,2,4,5], "ab")
