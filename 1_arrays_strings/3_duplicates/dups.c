@@ -3,18 +3,29 @@
 #include <string.h>
 #include <assert.h>
 
+/*
+ * This algorithm is optimal in space.
+ * The main idea is to find if s[i] (current character) is a duplicate.
+ * t marks the duplicate charater. If the s[i] is not a duplicate t
+ * will be increasing with i. If i is a duplicate, t will point to i
+ * and i will increase. If the new character is not a duplicate, we will
+ * move it to the left. If you have an stretch of repeats, t will point
+ * to the first repeat, and, when leaving the main loop, we will set
+ * the end of the string in s[t] (aaaa -> a)
+ * Fascinating.
+ */
 void _remove(char *s) {
   int i, j, t, len;
   len = strlen(s);
 
-  t = 1; // will point to duplicate indices
-  for (i=1; i<len; ++i) { // screen the input string
-    for (j=0; j<t; ++j)   // is there any duplicate for s[i] ?
-      if (s[j] == s[i]) break; // !! s[j] is a duplicate of s[i] .. (*)
+  t = 1;
+  for (i=1; i<len; ++i) {
+    for (j=0; j<t; ++j)
+      if (s[j] == s[i]) break;
 
-    if (j == t) { // t points to a duplicate,
-      s[t] = s[i]; // shift
-      ++t; // because of the shift, t+1 is a duplicate
+    if (j == t) {
+      s[t] = s[i];
+      ++t;
     }
   }
   s[t] = '\0';
