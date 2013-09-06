@@ -3,30 +3,44 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <title>drd</title>
-    <script type="text/javascript" src="http://mbostock.github.com/d3/d3.js?1.25.0"></script>
-    <script type="text/javascript" src="is_rotation.js"></script>
+    <script type="text/javascript" src="d3.js"></script>
     <style type="text/css">
+
 body {
   font-family: "Helvetica Neue", Helvetica, sans-serif;
   /* top right bottom left */
-  margin: 4em auto 4em auto;
+  margin: 100px auto 200px auto;
   width: 800px;
 }
 
-#results {
-  margin: 1em auto 1em auto;
+svg {
+  background: white;
+}
+
+
+svg circle {
+  fill: red;
+  stroke: blue;
+}
+
+svg text {
+  fill: black;
+  font-size: 58px;
+  font-weight: bold;
+}
+
+.inline {
+  display: inline;
 }
 
     </style>
   </head>
   <body>
     <div id="main">
-      <input type="text" name="s1" value="string 1">
-      <input type="text" name="s2" value="string 2">
-      <input type="submit" value="submit" name="submit"/>
-      <div id="results"> </div>
+      s1: <div id="s1" class="inline">Watermelon</div><br>
+      s2: <input type="text" name="s2" value="">
     </div>
 
-  <script type="text/javascript"> DRD.init(); </script>
+  <script type="text/javascript" src="is_rotation.js"></script>
   </body>
 </html>
