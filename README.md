@@ -10,7 +10,7 @@ solution. Like [this](http://drio.github.io/cracking.interview/1_arrays_strings/
 
 While attacking the problems in plain cli approaches is beneficial, exposing the
 solution via web allows me to explore and improve my knowledge in the web ecosystem
-(http, css, javascript and [d3](http://d3js.org).
+(http, css, javascript and [d3](http://d3js.org)).
 
 
 
