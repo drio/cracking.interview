@@ -13,10 +13,10 @@
       svg, text;
 
 function is_rotation(s1, s2) {
-  var _cc = s1 + s1;
+  var _cc = s1.toUpperCase() + s1.toUpperCase();
 
   if (s1.length < s2.length) return false;
-  return (_cc.indexOf(s2) != -1);
+  return (_cc.indexOf(s2.toUpperCase()) != -1);
 }
 
 function find_interval(s1, s2) {
@@ -24,13 +24,20 @@ function find_interval(s1, s2) {
       start = _cc.toUpperCase().indexOf(s2.toUpperCase()),
       i, j, data = [];
 
-  for (i = 0; i < _cc.length; ++i) {
-    j = (i < s1.length) ? i : i - s1.length;
-    if (i < s1.length)
-      data.push([ '', '']);
-    data[j][0] = s1[j];
-    if (data[j][1] != color_match)
-      data[j][1] = (i >= start && i < start + s2.length) ? color_match : color_no_match;
+  if (is_rotation(s1,s2)) {
+    for (i = 0; i < _cc.length; ++i) {
+      j = (i < s1.length) ? i : i - s1.length;
+      if (i < s1.length)
+        data.push([ '', '']);
+      data[j][0] = s1[j];
+      if (data[j][1] != color_match)
+        data[j][1] = (i >= start && i < start + s2.length) ? color_match : color_no_match;
+    }
+  }
+  else {
+    console.log("no..");
+    for (i = 0; i < s1.length; ++i)
+      data.push([ s1[i], color_no_match ]);
   }
 
   return data;
