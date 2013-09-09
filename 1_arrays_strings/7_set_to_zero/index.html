@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>drd</title>
+    <script type="text/javascript" src="d3.js"></script>
+    <style type="text/css">
+
+body {
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  /* top right bottom left */
+  margin: 100px auto 200px auto;
+  width: 800px;
+}
+
+svg {
+  background: white;
+}
+
+
+svg circle {
+  fill: red;
+  stroke: blue;
+}
+
+svg text {
+  fill: black;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.inline {
+  display: inline;
+}
+
+p {
+  margin: auto auto 45px auto;
+}
+    </style>
+  </head>
+  <body>
+    <div id="main">
+      <p>
+      Write an algorithm such that if an element in an MxN matrix is 0, its
+      entire row and column is set to 0
+      </p>
+
+      <div id="matrix">
+      </div>
+    </div>
+
+  <script type="text/javascript" src="set_to_zero.js"></script>
+  </body>
+</html>
