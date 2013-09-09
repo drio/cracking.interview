@@ -9,8 +9,9 @@ that should be the case quite often) I will add a Web UI interface to the
 solution. Like [this](http://drio.github.io/cracking.interview/1_arrays_strings/8_is_rotation/).
 
 While attacking the problems in plain cli approaches is beneficial, exposing the
-solution via web allows me to explore and improve my knowledge in the web ecosystem
+solution via web allows me to explore and improve my knowledge of the web ecosystem
 (http, css, javascript and [d3](http://d3js.org)).
+
 
 
 
