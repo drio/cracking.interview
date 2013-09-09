@@ -1,16 +1,16 @@
 (function() {
 
-  var result = d3.select("#results"),
-      log    = function(msg) { result.text(msg); },
-      clear  = function()    { result.text(""); },
-      s_sub  = "input[name=submit]",
-      s_s1   = "#s1",
-      s_s2   = "input[name=s2]",
-      color_match = 'red',
-      color_no_match = 'black',
-      width  = 500, height = 100,
-      x_g    = 0, y_g = 60,
-      svg, text;
+var result = d3.select("#results"),
+    log    = function(msg) { result.text(msg); },
+    clear  = function()    { result.text(""); },
+    s_sub  = "input[name=submit]",
+    s_s1   = "#s1",
+    s_s2   = "input[name=s2]",
+    color_match = 'red',
+    color_no_match = 'black',
+    width  = 500, height = 100,
+    x_g    = 0, y_g = 60,
+    svg, text;
 
 function is_rotation(s1, s2) {
   var _cc = s1.toUpperCase() + s1.toUpperCase();
