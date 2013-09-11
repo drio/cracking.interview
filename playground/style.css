@@ -1,0 +1,52 @@
+body {
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  /* top right bottom left */
+   margin: 100px auto 200px auto;
+  width:800px;
+  padding:10px;
+  border:2px solid gray;
+  margin:10px;
+  height: 500px;
+}
+
+aside {
+  position:  absolute;
+  left: 0;
+  top: 0; /* set these so Chrome doesn't return 'auto' from getComputedStyle */
+  width: 200px;
+  background: rgba(255,255,255,0.66);
+  border: 2px  solid rgba(0,0,0,0.5);
+  border-radius: 4px; padding: 8px;
+}
+
+textarea {
+  resize: none;
+  border-radius: 5px;
+  border: solid 1px #ccc;
+}
+
+svg {
+  background: white;
+}
+
+svg circle {
+  fill: red;
+  stroke: blue;
+}
+
+svg text {
+  fill: black;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.inline {
+  display: inline;
+}
+
+/*
+p {
+  margin: auto auto 45px auto;
+}
+*/
+
