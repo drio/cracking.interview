@@ -3,7 +3,7 @@ var app = function() {
   var app = function() {};
 
   app.init = function() {
-    app.add([1,2,3, "a"]);
+    app.add([ "foo","bar"]);
   };
 
   app.clean = function() {
@@ -21,7 +21,7 @@ var app = function() {
         .attr("class", "element")
 
         .selectAll("textarea")
-        .data(function(d) { return d + "";})
+        .data(function(d) { return [d];})
         .enter()
           .append("textarea")
           .text(function(d) { return d; })

@@ -6,6 +6,7 @@ body {
   padding:10px;
   border:0px solid gray;
   height: 400px;
+  font-size: 26px;
 }
 
 aside {
@@ -30,6 +31,7 @@ aside {
 }
 
 textarea {
+  font-size: 20px;
   resize: none;
   border-radius: 5px;
   border: solid 1px #ccc;
