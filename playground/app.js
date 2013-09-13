@@ -1,5 +1,39 @@
-(function() {
+var app = function() {
 
+  var app = function() {};
+
+  app.init = function() {
+    app.add([1,2,3, "a"]);
+  };
+
+  app.clean = function() {
+    d3.select("#main")
+      .selectAll("div")
+      .remove();
+  };
+
+  app.add = function(data) {
+    d3.select("#main")
+      .selectAll("div")
+      .data(data, String)
+      .enter()
+        .append("div")
+        .attr("class", "element")
+
+        .selectAll("textarea")
+        .data(function(d) { return d + "";})
+        .enter()
+          .append("textarea")
+          .text(function(d) { return d; })
+          .attr("rows", "1")
+          .attr("cols", "5");
+  };
+
+  return app;
+}();
+
+
+/*
 function drag_start(event) {
   var style = window.getComputedStyle(event.target, null);
   event.dataTransfer.setData("text/plain",
@@ -26,5 +60,4 @@ var dm = document.getElementById('dragme');
 dm.addEventListener('dragstart',drag_start,false);
 document.body.addEventListener('dragover',drag_over,false);
 document.body.addEventListener('drop',drop,false);
-
-})();
+*/

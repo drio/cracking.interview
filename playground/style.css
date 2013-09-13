@@ -1,12 +1,11 @@
 body {
   font-family: "Helvetica Neue", Helvetica, sans-serif;
   /* top right bottom left */
-   margin: 100px auto 200px auto;
-  width:800px;
+  margin: 20px auto 20px auto;
+  width:600px;
   padding:10px;
-  border:2px solid gray;
-  margin:10px;
-  height: 500px;
+  border:0px solid gray;
+  height: 400px;
 }
 
 aside {
@@ -19,34 +18,20 @@ aside {
   border-radius: 4px; padding: 8px;
 }
 
+.element {
+  position: relative;
+  left: 20px;
+  top: 0; /* set these so Chrome doesn't return 'auto' from getComputedStyle */
+  width: 50px;
+  background: white;
+  border: 1px  solid white;
+  border-radius: 4px;
+  /* padding: 3px; */
+}
+
 textarea {
   resize: none;
   border-radius: 5px;
   border: solid 1px #ccc;
 }
-
-svg {
-  background: white;
-}
-
-svg circle {
-  fill: red;
-  stroke: blue;
-}
-
-svg text {
-  fill: black;
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.inline {
-  display: inline;
-}
-
-/*
-p {
-  margin: auto auto 45px auto;
-}
-*/
 
