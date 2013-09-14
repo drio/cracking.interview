@@ -1,35 +1,56 @@
-var app = function() {
+var list = function() {
 
-  var app = function() {};
+  var list = function() {},
+      ta_rows = "1",
+      ta_cols = "5";
 
-  app.init = function() {
-    app.add([ "foo","bar"]);
-  };
+  list.data = [];
 
-  app.clean = function() {
-    d3.select("#main")
+  update = function() {
+    var divs = d3.select("#main")
       .selectAll("div")
-      .remove();
-  };
+      .data(list.data, String);
 
-  app.add = function(data) {
-    d3.select("#main")
-      .selectAll("div")
-      .data(data, String)
-      .enter()
-        .append("div")
-        .attr("class", "element")
-
-        .selectAll("textarea")
+    divs.enter()
+      .append("div")
+      .attr("class", "element")
+      .selectAll("textarea")
         .data(function(d) { return [d];})
         .enter()
           .append("textarea")
           .text(function(d) { return d; })
-          .attr("rows", "1")
-          .attr("cols", "5");
+          .attr("rows", ta_rows)
+          .attr("cols", ta_cols);
+
+    divs.exit()
+        .transition() // TODO: visual effect
+        .duration(1000)
+        .remove();
   };
 
-  return app;
+  list.clean = function() {
+    d3.select("#main")
+      .selectAll("div")
+      .remove();
+    list.data = [];
+  };
+
+
+  list.add = function(element) {
+    list.data.push(element);
+    update();
+    return list;
+  };
+
+  list.remove = function(element) {
+    for (var i=0; i<list.data.length; ++i)
+      if (list.data[i] === element)
+        list.data.splice(i, 1);
+    update();
+    return list;
+  };
+
+  return list;
 }();
 
 
