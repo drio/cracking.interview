@@ -6,8 +6,13 @@ function create(spec) {
   ll.first   = null;
   ll.current = null;
 
+  ll.rewind = function() {
+    ll.current = { next: ll.first};
+    return ll;
+  };
+
   ll.empty = function() {
-    return (ll.first == ll.last && ll.first === null);
+    return (ll.first === null);
   };
 
   // Move the current pointer to the next element in the list
@@ -26,11 +31,7 @@ function create(spec) {
 
     if (ll.empty()) {
       ll.first = new_element;
-      ll.current = { next: ll.first};
-    }
-    else if (!ll.empty() && ll.current === null) {
-      new_element.next = ll.first.next;
-      ll.first = new_element;
+      ll.current = { next: new_element};
     }
     else {
       new_element.next = ll.current.next;
@@ -38,6 +39,9 @@ function create(spec) {
     }
 
     return ll;
+  };
+
+  ll.rm = function() {
   };
 
   return ll;
