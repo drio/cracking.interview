@@ -1,15 +1,14 @@
-var list = function() {
+var app = function() {
 
-  var list = function() {},
+  var list = DS.linkedList.create(),
       ta_rows = "1",
-      ta_cols = "5";
-
-  list.data = [];
+      ta_cols = "5",
+      _app = {};
 
   update = function() {
     var divs = d3.select("#main")
       .selectAll("div")
-      .data(list.data, String);
+      .data(list.toArray(), String);
 
     divs.enter()
       .append("div")
@@ -28,29 +27,26 @@ var list = function() {
         .remove();
   };
 
-  list.clean = function() {
+  _app.clean = function() {
     d3.select("#main")
       .selectAll("div")
       .remove();
-    list.data = [];
+    list = DS.linkedList.create();
   };
 
-
-  list.add = function(element) {
-    list.data.push(element);
+  _app.add = function(element) {
+    list.add(element);
     update();
     return list;
   };
 
-  list.remove = function(element) {
-    for (var i=0; i<list.data.length; ++i)
-      if (list.data[i] === element)
-        list.data.splice(i, 1);
+  _app.remove = function(element) {
+    // TODO
     update();
     return list;
   };
 
-  return list;
+  return _app;
 }();
 
 

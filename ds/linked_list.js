@@ -22,6 +22,15 @@ function create(spec) {
 
   init();
 
+  ll.toArray = function() {
+    var p = first, a = [];
+    while (p) {
+      a.push(p.data);
+      p = p.next;
+    }
+    return a;
+  };
+
   ll.rewind = function() {
     current = null;
     end_reached = false;
@@ -96,5 +105,4 @@ function create(spec) {
   return ll;
 }
 
-
-})(); // END client mode
+})();
