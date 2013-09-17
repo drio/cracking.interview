@@ -23,10 +23,22 @@ assert(!ml.rm());
 ml.next();
 assert(ml.rm() === 1);
 assert(ml.empty());
+
 ml.add(1).add(2).add(3);
 assert(ml.next() === 3);
 assert(ml.next() === 2);
-assert(ml.rm() === 2);
 assert(ml.next() === 1);
+assert(ml.rm() === 1);
+assert(ml.next() === null);
 
+ml = ll.create();
+ml.add(1).add(2);
+ml.next();
+assert(ml.rm() === 2);
+//console.log(ml.toArray());
 
+ml = ll.create();
+ml.add(1).add(2).add(3);
+ml.next();
+assert(ml.next() === 2);
+assert(ml.rm() === 2);

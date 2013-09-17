@@ -11,48 +11,47 @@ else {
 function create(spec) {
   var ll = function() {};
 
-  var first, last, current, end_reached;
+  var first, last, current;
 
   function init() {
-    first       = null;
-    last        = null;
-    current     = null;
-    end_reached = false;
+    last    = {data: null, next: null};
+    first   = {data: null, next: last};
+    current = first;
   }
 
   init();
 
+  ll.info = function() {
+    var log = console.log;
+    log(first);
+    log(last);
+    log(current);
+  };
+
   ll.toArray = function() {
     var p = first, a = [];
     while (p) {
-      a.push(p.data);
+      if (p.data) a.push(p.data);
       p = p.next;
     }
     return a;
   };
 
   ll.rewind = function() {
-    current = null;
-    end_reached = false;
+    current = first;
     return ll;
   };
 
   ll.empty = function() {
-    return (first === null);
+    return (first.next === last);
   };
 
   // Move the current pointer to the next element in the list
   ll.next = function() {
-    if (ll.empty())
+    if (ll.empty() || current.next === last)
       return null;
-    else if (!current && end_reached) // At the end and asking to move
-      return null;
-    else if (!current && !end_reached)
-      current = first;
-    else {
+    else
       current = current.next;
-      if (!current) end_reached = true;
-    }
 
     return current ? current.data : null;
   };
@@ -62,20 +61,12 @@ function create(spec) {
     var new_element = { data: e, next: null };
 
     if (ll.empty()) {
-      first = new_element;
-      last  = new_element;
+      first.next = new_element;
+      new_element.next = last;
     }
     else {
-      if (current) {
-        new_element.next = current.next;
-        current.next  = new_element;
-        if (current === last)
-          last = new_element;
-      }
-      else { // current not set, insert at the beginning
-        new_element.next = first;
-        first = new_element;
-      }
+      new_element.next = current.next;
+      current.next  = new_element;
     }
 
     return ll;
@@ -83,20 +74,21 @@ function create(spec) {
 
   ll.rm = function() {
     var p, e;
-    if (ll.empty()) return null;
-    if (!current) return null;
-    if (first === current) {
-      e = first.data;
-      init();
-    }
+    if (ll.empty() || current === first)
+      return null;
     else {
-      p = { next:first };
+      p = first;
       while (p.next !== current)
         p = p.next;
-      if (p.next === last)
-        last = p;
       e = p.next.data;
       p.next = p.next.next;
+      // set new current
+      if (ll.empty())
+        current = first;
+      else {
+        if (current.next === last) current = p;
+        else current = p.next.next;
+      }
     }
 
     return e;
