@@ -3,23 +3,28 @@ var app = function() {
   var list = DS.linkedList.create(),
       ta_rows = "1",
       ta_cols = "5",
-      _app = {};
+      _app = {},
+      input_val = "";
+
+  function set_listener() {
+    d3.select("input").on("keydown", function() {
+      if (d3.event.keyCode === 13) {
+        app.add(this.value);
+        this.value = "";
+      }
+    });
+  }
+
+  set_listener();
 
   update = function() {
     var divs = d3.select("#main")
       .selectAll("div")
-      .data(list.toArray(), String);
+      .data(list.toArray().reverse());
 
     divs.enter()
-      .append("div")
-      .attr("class", "element")
-      .selectAll("textarea")
-        .data(function(d) { return [d];})
-        .enter()
-          .append("textarea")
-          .text(function(d) { return d; })
-          .attr("rows", ta_rows)
-          .attr("cols", ta_cols);
+        .append("div")
+        .text(function(d) { return d;});
 
     divs.exit()
         .transition() // TODO: visual effect

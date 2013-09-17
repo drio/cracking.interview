@@ -6,34 +6,10 @@ body {
   padding:10px;
   border:0px solid gray;
   height: 400px;
-  font-size: 26px;
+  font-size: 12px;
 }
 
 aside {
-  position:  absolute;
-  left: 0;
-  top: 0; /* set these so Chrome doesn't return 'auto' from getComputedStyle */
-  width: 200px;
-  background: rgba(255,255,255,0.66);
-  border: 2px  solid rgba(0,0,0,0.5);
-  border-radius: 4px; padding: 8px;
-}
-
-.element {
-  position: relative;
-  left: 20px;
-  top: 0; /* set these so Chrome doesn't return 'auto' from getComputedStyle */
-  width: 50px;
-  background: white;
-  border: 1px  solid white;
-  border-radius: 4px;
-  /* padding: 3px; */
-}
-
-textarea {
-  font-size: 20px;
-  resize: none;
-  border-radius: 5px;
-  border: solid 1px #ccc;
+  padding-bottom: 20px;
 }
 
