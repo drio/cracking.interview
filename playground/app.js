@@ -37,11 +37,16 @@ var app = function() {
   _app.add = function(element) {
     list.add(element);
     update();
-    return list;
+    return _app;
   };
 
   _app.remove = function(element) {
-    // TODO
+    list.rewind();
+    var c = list.next();
+    while (c) {
+      if (c === element) list.rm();
+      c = list.next();
+    }
     update();
     return list;
   };
