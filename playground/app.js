@@ -15,12 +15,13 @@ var app = function() {
     });
   }
 
-  set_listener();
+  function update() {
+    var a = list.toArray().reverse();
+    console.log(a);
 
-  update = function() {
     var divs = d3.select("#main")
       .selectAll("div")
-      .data(list.toArray().reverse());
+      .data(a);
 
     divs.enter()
         .append("div")
@@ -30,6 +31,25 @@ var app = function() {
         .transition() // TODO: visual effect
         .duration(1000)
         .remove();
+  }
+
+  _app.remove_dups = function() {
+    var h = {}, e;
+    list.rewind();
+    e = list.next();
+    console.log(list.toArray());
+    while (e) {
+      console.log(e);
+      if (h[e])
+        list.rm();
+      else
+        h[e] = true;
+      e = list.next();
+    }
+    d3.select("#main").selectAll("div").remove();
+    list.rewind();
+    update();
+    return list;
   };
 
   _app.clean = function() {
@@ -56,6 +76,8 @@ var app = function() {
     return list;
   };
 
+  document.getElementById('input').focus();
+  set_listener();
   return _app;
 }();
 

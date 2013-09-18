@@ -42,3 +42,15 @@ ml.add(1).add(2).add(3);
 ml.next();
 assert(ml.next() === 2);
 assert(ml.rm() === 2);
+
+ml = ll.create();
+ml.add(1).add(2).add(23).add(45).add(1).add(2);
+ml.rewind();
+assert(ml.next() === 2);
+assert(ml.next() === 1);
+assert(ml.next() === 45);
+assert(ml.next() === 23);
+assert(ml.next() === 2);
+assert(ml.rm() === 2);
+assert(ml.next() === 1);
+assert(ml.rm() === 1);

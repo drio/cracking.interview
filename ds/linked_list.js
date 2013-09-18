@@ -85,10 +85,8 @@ function create(spec) {
       // set new current
       if (ll.empty())
         current = first;
-      else {
-        if (current.next === last) current = p;
-        else current = p.next.next;
-      }
+      else
+        current = p;
     }
 
     return e;
