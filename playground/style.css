@@ -6,10 +6,24 @@ body {
   padding:10px;
   border:0px solid gray;
   height: 400px;
-  font-size: 12px;
+  font-size: 14px;
+}
+
+a:not(:hover) {
+  text-decoration: none;
+}
+
+a {
+  color: steelblue;
 }
 
 aside {
   padding-bottom: 20px;
+}
+
+.right {
+  position:absolute;
+  left: 150px;
+  width: 220px;
 }
 

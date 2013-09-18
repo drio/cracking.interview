@@ -13,11 +13,18 @@ var app = function() {
         this.value = "";
       }
     });
+
+    d3.select("#link_rdups").on("click", function() {
+      var foo = _app.remove_dups();
+    });
+  }
+
+  function flush_ui_list() {
+    d3.select("#main").selectAll("div").remove();
   }
 
   function update() {
     var a = list.toArray().reverse();
-    console.log(a);
 
     var divs = d3.select("#main")
       .selectAll("div")
@@ -37,16 +44,14 @@ var app = function() {
     var h = {}, e;
     list.rewind();
     e = list.next();
-    console.log(list.toArray());
     while (e) {
-      console.log(e);
       if (h[e])
         list.rm();
       else
         h[e] = true;
       e = list.next();
     }
-    d3.select("#main").selectAll("div").remove();
+    flush_ui_list();
     list.rewind();
     update();
     return list;
