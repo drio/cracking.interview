@@ -3,19 +3,26 @@ var app = function() {
   var list = DS.linkedList.create(),
       ta_rows = "1",
       ta_cols = "5",
-      _app = {},
-      input_val = "";
+      _app = {};
+
+  function input_val(n) {
+    var id = (n === undefined) ? "input1" : "input" + n;
+    return document.getElementById(id).value;
+  }
 
   function set_listener() {
-    d3.select("input").on("keydown", function() {
+    d3.select("#input1").on("keydown", function() {
       if (d3.event.keyCode === 13) {
-        app.add(this.value);
+        app.add(input_val());
         this.value = "";
       }
     });
 
-    d3.select("#link_rdups").on("click", function() {
-      var foo = _app.remove_dups();
+    d3.select("#link_rdups").on("click", _app.remove_dups);
+    d3.select("#input2").on("keydown", function() {
+      if (d3.event.keyCode === 13) {
+        app.nth(input_val(2));
+      }
     });
   }
 
@@ -26,6 +33,7 @@ var app = function() {
   function update() {
     var a = list.toArray().reverse();
 
+    console.log(a);
     var divs = d3.select("#main")
       .selectAll("div")
       .data(a);
@@ -40,16 +48,25 @@ var app = function() {
         .remove();
   }
 
-  _app.remove_dups = function() {
-    var h = {}, e;
+  _app.nth = function() {
+    var n = input_val(2),
+        e = list.n_th(list.next(), n);
+    console.log(">> " + n + " element to last is: " + e);
+    d3.select("#info").text(n + " element to last is: " + e);
+    document.getElementById("input2").value = "";
     list.rewind();
-    e = list.next();
-    while (e) {
-      if (h[e])
+  };
+
+  _app.remove_dups = function() {
+    var h = {}, curr;
+    list.rewind();
+    curr = list.next();
+    while (curr) {
+      if (h[curr.data])
         list.rm();
       else
-        h[e] = true;
-      e = list.next();
+        h[curr.data] = true;
+      curr = list.next();
     }
     flush_ui_list();
     list.rewind();
@@ -81,7 +98,7 @@ var app = function() {
     return list;
   };
 
-  document.getElementById('input').focus();
+  document.getElementById('input1').focus();
   set_listener();
   return _app;
 }();
