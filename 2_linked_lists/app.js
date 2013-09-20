@@ -33,7 +33,6 @@ var app = function() {
   function update() {
     var a = list.toArray().reverse();
 
-    console.log(a);
     var divs = d3.select("#main")
       .selectAll("div")
       .data(a);
