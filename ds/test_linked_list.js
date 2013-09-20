@@ -10,9 +10,9 @@ assert(ml.empty());
 assert(!ml.next());
 ml.add(1);
 assert(!ml.empty());
-assert(ml.next() === 1);
+assert(ml.next().data === 1);
 ml.add(2);
-assert(ml.next() === 2);
+assert(ml.next().data === 2);
 assert(!ml.next());
 assert(!ml.next());
 
@@ -25,9 +25,9 @@ assert(ml.rm() === 1);
 assert(ml.empty());
 
 ml.add(1).add(2).add(3);
-assert(ml.next() === 3);
-assert(ml.next() === 2);
-assert(ml.next() === 1);
+assert(ml.next().data === 3);
+assert(ml.next().data === 2);
+assert(ml.next().data === 1);
 assert(ml.rm() === 1);
 assert(ml.next() === null);
 
@@ -40,17 +40,34 @@ assert(ml.rm() === 2);
 ml = ll.create();
 ml.add(1).add(2).add(3);
 ml.next();
-assert(ml.next() === 2);
+assert(ml.next().data === 2);
 assert(ml.rm() === 2);
 
 ml = ll.create();
 ml.add(1).add(2).add(23).add(45).add(1).add(2);
 ml.rewind();
-assert(ml.next() === 2);
-assert(ml.next() === 1);
-assert(ml.next() === 45);
-assert(ml.next() === 23);
-assert(ml.next() === 2);
+assert(ml.next().data === 2);
+assert(ml.next().data === 1);
+assert(ml.next().data === 45);
+assert(ml.next().data === 23);
+assert(ml.next().data === 2);
 assert(ml.rm() === 2);
-assert(ml.next() === 1);
+assert(ml.next().data === 1);
 assert(ml.rm() === 1);
+
+function test_nth() {
+  var i, ml = ll.create();
+
+  for (i=5; i>=0; i--)
+    ml.add(i);
+  assert(!ml.empty());
+
+  first = ml.next();
+  assert(first.data === 0);
+
+  for (i=0; i>=5; i++)
+    assert(ml.n_th(first, i) === i);
+}
+
+test_nth();
+

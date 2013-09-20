@@ -21,6 +21,22 @@ function create(spec) {
 
   init();
 
+  // Find the nth to last element
+  // Assumptions: there are at least n elements in the list
+  ll.n_th  = function (first, n) {
+    var p1 = first, p2 = first, i;
+
+    for (i=0; i<=n; i++)
+      p2 = p2.next;
+
+    while (p2.next) {
+      p2 = p2.next;
+      p1 = p1.next;
+    }
+
+    return p1.data;
+  };
+
   ll.info = function() {
     var log = console.log;
     log(first);
@@ -31,7 +47,7 @@ function create(spec) {
   ll.toArray = function() {
     var p = first, a = [];
     while (p) {
-      if (p.data) a.push(p.data);
+      if (p.data !== null) a.push(p.data);
       p = p.next;
     }
     return a;
@@ -53,7 +69,7 @@ function create(spec) {
     else
       current = current.next;
 
-    return current ? current.data : null;
+    return current;
   };
 
   // Add e right after current
