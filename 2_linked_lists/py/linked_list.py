@@ -38,6 +38,21 @@ class LinkedList(object):
 
 		return False
 
+	def n_to_last(self, n):
+		stop = self.size - n - 1
+		p = self.head
+
+		if stop < 0:
+			return None
+
+		if stop == 0:
+			return p
+
+		for i in range(0, stop):
+			p = p.next
+
+		return p
+
 	def plist(self):
 		p = self.head
 		l = []

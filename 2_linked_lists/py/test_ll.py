@@ -38,6 +38,23 @@ class LinkedListTest(unittest.TestCase):
 		ae(False, ll.delete("X"))
 		ae(0, ll.size)
 
+	def test_n_to_last(self):
+		ae = self.assertEqual
+		ll = linked_list.LinkedList()
+		l = [ "A", "B", "C", "D" ]
+		for e in l:
+			ll.insert(e)
+		ae("A", ll.n_to_last(0).data)
+		ae("B", ll.n_to_last(1).data)
+		ae("C", ll.n_to_last(2).data)
+		ae("D", ll.n_to_last(3).data)
+		ae(None, ll.n_to_last(4))
+
+		ll = linked_list.LinkedList()
+		ae(None, ll.n_to_last(4))
+		ae(None, ll.n_to_last(0))
+
+
 	def test_remove_dups(self):
 		ae = self.assertEqual
 		ll = linked_list.LinkedList()
