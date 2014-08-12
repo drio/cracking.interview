@@ -38,6 +38,31 @@ class LinkedListTest(unittest.TestCase):
 		ae(False, ll.delete("X"))
 		ae(0, ll.size)
 
+	def test_remove_dups(self):
+		ae = self.assertEqual
+		ll = linked_list.LinkedList()
+		ll.insert("A")
+		ll.insert("B")
+		ll.insert("A")
+		ll.insert("B")
+		ll.insert("C")
+		ll.remove_dups()
+		ae(["C", "B", "A"], ll.plist())
+
+		ll = linked_list.LinkedList()
+		ll.insert("A")
+		ll.insert("A")
+		ll.insert("A")
+		ll.remove_dups()
+		ae(["A"], ll.plist())
+
+		ll = linked_list.LinkedList()
+		ll.insert("A")
+		ll.insert("C")
+		ll.insert("A")
+		ll.remove_dups()
+		ae(["A", "C"], ll.plist())
+
 
 if __name__ == '__main__':
   unittest.main()

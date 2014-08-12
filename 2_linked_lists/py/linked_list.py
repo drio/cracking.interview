@@ -38,3 +38,35 @@ class LinkedList(object):
 
 		return False
 
+	def plist(self):
+		p = self.head
+		l = []
+		while p.next:
+			l.append(p.data)
+			p = p.next
+		l.append(p.data)
+		return l
+
+	def remove_dups(self):
+		if self.size == 0: return 0
+
+		p = self.head
+		d = p.data
+		while d:
+			first = p
+			while p.next:
+				if p.next.data == d:
+					p.next = p.next.next
+					self.size -= 1
+				if p.next:
+					p = p.next
+
+			if p.data == d:
+				first.next = p.next
+
+			if first.next:
+				p = first.next
+				d = first.next.data
+			else:
+				d = None
+
