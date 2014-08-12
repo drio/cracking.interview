@@ -63,25 +63,18 @@ class LinkedList(object):
 		return l
 
 	def remove_dups(self):
-		if self.size == 0: return 0
+		if self.size == 0: return
 
-		p = self.head
-		d = p.data
-		while d:
-			first = p
-			while p.next:
-				if p.next.data == d:
-					p.next = p.next.next
+		head = self.head
+		while head:
+			c = head.next
+			p = head
+			while c:
+				if c.data == head.data:
+					p.next = c.next
+					c = c.next
 					self.size -= 1
-				if p.next:
+				else:
+					c = c.next
 					p = p.next
-
-			if p.data == d:
-				first.next = p.next
-
-			if first.next:
-				p = first.next
-				d = first.next.data
-			else:
-				d = None
-
+			head = head.next

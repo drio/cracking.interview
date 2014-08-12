@@ -80,6 +80,17 @@ class LinkedListTest(unittest.TestCase):
 		ll.remove_dups()
 		ae(["A", "C"], ll.plist())
 
+		ll = linked_list.LinkedList()
+		ll.insert(1)
+		ll.insert(0)
+		ll.insert(2)
+		ll.insert(2)
+		ll.insert(2)
+		ll.insert(1)
+		ll.remove_dups()
+		ae([1, 2, 0], ll.plist())
+
 
 if __name__ == '__main__':
-  unittest.main()
+  	unittest.main()
+
