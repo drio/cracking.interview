@@ -23,6 +23,29 @@ class StackTest(unittest.TestCase):
 
 		ae(None, s.push(100))
 
+class QueueTest(unittest.TestCase):
+	def test_queue(self):
+		ae = self.assertEqual
+		q = stack.Queue()
+		ae(1, q.queue(1))
+		ae(2, q.queue(2))
+		ae(2, q.queue(2))
+
+	def test_dequeue(self):
+		ae = self.assertEqual
+		q = stack.Queue()
+		ae(1, q.queue(1))
+		ae(2, q.queue(2))
+
+		ae(1, q.dequeue())
+		ae(2, q.dequeue())
+		ae(None, q.dequeue())
+
+		for i in range(0,10):
+			ae(i, q.queue(i))
+
+		for i in range(0,10):
+			ae(i, q.dequeue())
 
 
 if __name__ == '__main__':
