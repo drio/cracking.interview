@@ -1,7 +1,7 @@
 # vim: set ts=4 noet:
 # Find kth largest number in an array of N numbers
 
-# Time cost: O(nlog(n))
+# Time cost: O(nlog(n)) + O(n) = O(n)
 # Space cost: O(n) since I am creating a new list for sorting
 def find_kth(l, k):
     if len(l) == 0: return None
