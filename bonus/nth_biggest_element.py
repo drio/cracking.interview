@@ -3,7 +3,7 @@
 
 # Time cost: O(nlog(n)) + O(n) = O(n)
 # Space cost: O(n) since I am creating a new list for sorting
-def find_kth(l, k):
+def find_kth1(l, k):
     if len(l) == 0: return None
 
     p = 0
@@ -21,6 +21,11 @@ def find_kth(l, k):
             up += 1
 
     return None
+
+def find_kth2(l, k):
+    None
+
+find_kth = find_kth2
 
 assert( find_kth([2, 12, 4, 1], 2) == 4 )
 assert( find_kth([2, 12, 4, 1], 0) == 1 )
