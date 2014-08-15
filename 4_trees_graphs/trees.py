@@ -54,3 +54,32 @@ class BST(object):
 		else:
 			return self.search(cn.left, k)
 
+	# time: O(log(n))
+	# space: O(log(n))
+	def size_per_levels(self, cn, nl, l=0):
+		if not cn:
+			return nl
+
+		if l not in nl:
+			nl[l] = 0
+		nl[l] += 1
+
+		self.size_per_levels(cn.left, nl, l+1)
+		self.size_per_levels(cn.right, nl, l+1)
+
+	# Check if two trees have the same shape
+	# time: O(log(n))
+	# space: O(log(n))
+	def same_shape(self, t2):
+		d1, d2 = {}, {}
+		self.size_per_levels(self.root, d1)
+		self.size_per_levels(t2.root, d2)
+
+		if len(d1.keys()) != len(d2.keys()):
+			return False
+
+		for k,v in d1.items():
+			if v != d2[k]:
+				return False
+
+		return True
