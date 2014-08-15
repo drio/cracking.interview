@@ -34,6 +34,17 @@ class TreeTest(unittest.TestCase):
 		t.walk(t.root, wl)
 		ae(sorted(l), wl)
 
+	def test_search(self):
+		ae = self.assertEqual
+		t = trees.BST()
+		l = [5, 1, 7, 6, 2]
+		for i in l:
+			t.insert(i)
+
+		ae(7, t.search(t.root, 7).data)
+		ae(2, t.search(t.root, 2).data)
+		ae(None, t.search(t.root, 12))
+
 
 if __name__ == '__main__':
   	unittest.main()
