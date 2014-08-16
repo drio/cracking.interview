@@ -1,5 +1,7 @@
 # vim: set ts=4 noet:
 #
+def swap(pl, i, j):
+	pl[i], pl[j] = pl[j], pl[i]
 
 # Insert sort: O(n^2)
 def isort(l):
@@ -7,10 +9,8 @@ def isort(l):
         s = i+1
         for j in range(s, len(l)):
             if l[j] < l[i]:
-                l[i], l[j] = l[j], l[i]
+              	swap(l,i,j)
 
-def swap(pl, i, j):
-	pl[i], pl[j] = pl[j], pl[i]
 
 def qsort(pl, l, u): # python list, lower, uper
 	if l >= u:
