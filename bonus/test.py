@@ -4,6 +4,17 @@ import unittest
 import sorting
 import coin_change
 import recursion
+import search
+
+class SearchTest(unittest.TestCase):
+	def test_BS(self):
+		sa = self.assertEqual
+		l = range(0,100000)
+		sa(3, search.binarySearch(l, 3))
+		sa(9, search.binarySearch(l, 9))
+		sa(0, search.binarySearch(l, 0))
+		sa(100, search.binarySearch(l, 100))
+
 
 class SortTest(unittest.TestCase):
 	def test_isort(self):
