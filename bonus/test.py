@@ -36,11 +36,21 @@ class SortTest(unittest.TestCase):
 		sorting.qsort(l, 0, len(l))
 
 class ChangeTest(unittest.TestCase):
-
 	def test_change(self):
 		sa = self.assertEqual
 		sa(1, 1)
 		sa(3, coin_change.rec_change(10, [4,5,7], 10))
+
+	def test_dp_change(self):
+		sa = self.assertEqual
+		l = coin_change.dp_change(5, (2,3))
+		sa(2, l[5])
+		sa(2, l[4])
+		sa(1, l[3])
+		sa(0, l[0])
+		sa(coin_change.inf, l[1])
+
+
 
 class BasicTests(unittest.TestCase):
 	def test_fibo(self):
@@ -81,6 +91,8 @@ class BasicTests(unittest.TestCase):
 		sa(1, recursion.itFactorial(0))
 		sa(1, recursion.itFactorial(1))
 		sa(120, recursion.itFactorial(5))
+
+
 
 if __name__ == '__main__':
   	unittest.main()
