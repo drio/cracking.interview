@@ -8,11 +8,37 @@ import search
 import permutations
 
 class PermuTest(unittest.TestCase):
+
+	def test_factoradic(self):
+		sa = self.assertEqual
+		sa([0], permutations.factRep(0))
+		sa([1,0], permutations.factRep(1))
+		sa([1,0, 0], permutations.factRep(2))
+		sa([1,1, 0], permutations.factRep(3))
+		sa([2,0, 0], permutations.factRep(4))
+
+		_ = permutations.factToPerm([0,1,2,3,4,5,6], [4,0,4,1,0,0,0])
+		sa([4,0,6,2,1,3,5], _)
+
+		sa(permutations.factRep(463), [3, 4,1, 0, 1, 0])
+
+		l = list("abcd")
+		it = permutations.iteratorPerm(l)
+		s = set([])
+		for i in range(0, permutations.factorial(len(l))):
+			s.add(''.join(it()))
+		sa(24, len(s))
+
 	def test_Permu(self):
 		sa = self.assertEqual
-		lp = []
-		l = permutations.allPermu(list("abcd"), lp)
-		sa(24, len(lp))
+		st = set([])
+		permutations.allPermu(list("abcd"), st)
+		sa(24, len(st))
+
+		st = set([])
+		permutations.allPermu(list("abcde"), st)
+		#for p in lp: print p
+
 
 class SearchTest(unittest.TestCase):
 	def test_BS(self):
