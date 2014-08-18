@@ -5,6 +5,14 @@ import sorting
 import coin_change
 import recursion
 import search
+import permutations
+
+class PermuTest(unittest.TestCase):
+	def test_Permu(self):
+		sa = self.assertEqual
+		lp = []
+		l = permutations.allPermu(list("abcd"), lp)
+		sa(24, len(lp))
 
 class SearchTest(unittest.TestCase):
 	def test_BS(self):
