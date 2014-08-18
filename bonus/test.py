@@ -15,6 +15,11 @@ class SearchTest(unittest.TestCase):
 		sa(0, search.binarySearch(l, 0))
 		sa(100, search.binarySearch(l, 100))
 
+		sa(3, search.binarySearch(l, 3, "rec"))
+		sa(9, search.binarySearch(l, 9), "rec")
+		sa(0, search.binarySearch(l, 0), "rec")
+		sa(100, search.binarySearch(l, 100), "rec")
+
 
 class SortTest(unittest.TestCase):
 	def test_isort(self):
