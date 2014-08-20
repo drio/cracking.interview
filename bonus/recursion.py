@@ -1,5 +1,30 @@
 # vim: set ts=4 noet:
 
+# <n> is number of disks
+# move <p_from> peg, disc <p_to>
+# <p_names> is a hash of with the names of the pegs [A,B,C]
+def hanoi(pegs, p_from, p_to, n):
+	# helper to print the string for an action (move peg)
+	def move(disk_num, _from, _to):
+		print "move disk %s from peg %s to peg %s" % (disk_num, _from, _to)
+
+	# Given a from and to, tell me the other peg to use
+	def find_tmp_peg(_from, _to):
+		return [i for i in pegs if i != _from and i != _to][0]
+
+	# Main function, base case, there is only 1 disk to move
+	if n == 1:
+		move(n, p_from, p_to)
+	# recursion case:
+	# Move n-1 disk to the temporary peg (tmp_to)
+	# now you can move disk n to the p_to peg (the destination peg)
+	# And finally move all the disks in the temporary peg to the p_to peg
+	else:
+		tmp_to = find_tmp_peg(p_from, p_to)
+		hanoi(pegs, p_from, tmp_to, n-1)
+		move(n, p_from, p_to)
+		hanoi(pegs, tmp_to, p_to, n-1)
+
 def factorial(n):
 	if n < 2:
 		return 1
