@@ -76,14 +76,22 @@ class SortTest(unittest.TestCase):
 
 	def test_qsort_core(self):
 		sa = self.assertEqual
-		l = [3, 10, 2, 15, 4]
+
+		if True:
+			l = [3, 10, 2, 15, 4]
+			sorting.qsort(l, 0, len(l))
+			sa(l, sorted(l))
+
+			l = [3, 2, -23]
+			sorting.qsort(l, 0, len(l))
+			print l, sorted(l)
+			sa(l, sorted(l))
+
+		l = [7, 4, 2, -1]
 		sorting.qsort(l, 0, len(l))
-		l = [4545, 454, 4, 3, 34, 2, 234, -23]
-		sorting.qsort(l, 0, len(l))
-		l = []
-		sorting.qsort(l, 0, len(l))
-		l = [1]
-		sorting.qsort(l, 0, len(l))
+		print l, sorted(l)
+		sa(l, sorted(l))
+
 
 class ChangeTest(unittest.TestCase):
 	def test_change(self):

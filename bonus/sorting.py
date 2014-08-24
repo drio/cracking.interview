@@ -17,11 +17,13 @@ def qsort(pl, l, u): # python list, lower, uper
 		return
 
 	m = l
-	for i in range(l, u):
+	for i in range(l+1, u):
 		if pl[i] < pl[l]:
 			m += 1
 			swap(pl, i, m)
 	swap(pl, l, m)
 
-	qsort(pl, l, m-1)
+	print ">> ", pl
+
+	qsort(pl, l, m)
 	qsort(pl, m+1, u)
