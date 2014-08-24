@@ -63,9 +63,9 @@ def msort(i_list, l, u):
 	if l >= u:
 		return
 
-	mid_offset = (u-l) / 2
-	msort(i_list, l, l+mid_offset)
-	msort(i_list, l+mid_offset+1, u)
+	middle = (l + (u-l) / 2)
+	msort(i_list, l, middle)
+	msort(i_list, middle+1, u)
 
 	# Both "lists" are sorted, I have to merge them
-	merge(i_list, l, l+mid_offset, l+mid_offset+1, u)
+	merge(i_list, l, middle, middle+1, u)
