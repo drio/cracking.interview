@@ -6,6 +6,7 @@ import coin_change
 import recursion
 import search
 import permutations
+import random
 
 class PermuTest(unittest.TestCase):
 
@@ -56,6 +57,38 @@ class SearchTest(unittest.TestCase):
 
 
 class SortTest(unittest.TestCase):
+	def random_list(self, n=10):
+		l = []
+		for i in range(0, n):
+			l.append(random.randint(-1000, 1000))
+		return l
+
+	def test_merge(self):
+		sa = self.assertEqual
+
+		l = [2, 7, 3, 4]
+		sl = sorted(l)
+		sorting.merge(l, 0, 1, 2, 3)
+		sa(sl, l)
+
+		l = [7, 2]
+		sl = sorted(l)
+		sorting.merge(l, 0, 0, 1, 1)
+		sa(sl, l)
+
+		l = [-34, 4 ,4, 5, 120, 200, 300, 400]
+		sl = sorted(l)
+		sorting.merge(l, 0, 4, 5, 7)
+		sa(sl, l)
+
+	def test_msort(self):
+		for i in range(1,100):
+			sa = self.assertEqual
+			l = self.random_list(random.randint(10,100))
+			sl = sorted(l)
+			sorting.msort(l, 0, len(l)-1)
+			sa(sl, l)
+
 	def test_isort(self):
 		sa = self.assertEqual
 		l = [3, 100, 2, 34, 4]
@@ -84,12 +117,10 @@ class SortTest(unittest.TestCase):
 
 			l = [3, 2, -23]
 			sorting.qsort(l, 0, len(l))
-			print l, sorted(l)
 			sa(l, sorted(l))
 
 		l = [7, 4, 2, -1]
 		sorting.qsort(l, 0, len(l))
-		print l, sorted(l)
 		sa(l, sorted(l))
 
 
