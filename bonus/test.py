@@ -7,6 +7,7 @@ import recursion
 import search
 import permutations
 import random
+import bitman
 
 class PermuTest(unittest.TestCase):
 
@@ -55,13 +56,66 @@ class SearchTest(unittest.TestCase):
 		sa(0, search.binarySearch(l, 0), "rec")
 		sa(100, search.binarySearch(l, 100), "rec")
 
+class TestBitMan(unittest.TestCase):
+	def test_bucket_sort(self):
+		sa = self.assertEqual
+
+		sa(bitman.i_to_bin(2), [1, 0])
+		for i in range(0, 1000):
+			t = map(lambda e: int(e), list("{0:b}".format(i)))
+			sa(bitman.i_to_bin(i), t)
+
+	def test_msb(self):
+		sa = self.assertEqual
+		sa(bitman.msb(8, 2), [1, 0])
+		sa(bitman.msb(123, 3), [1, 1, 1])
+		sa(bitman.msb(3423, 4), [1, 1, 0, 1])
 
 class SortTest(unittest.TestCase):
-	def random_list(self, n=10):
+	def random_list(self, n=10, min=-1000, max=1000):
 		l = []
 		for i in range(0, n):
-			l.append(random.randint(-1000, 1000))
+			l.append(random.randint(min, max))
 		return l
+
+	def test_bucket_sort(self):
+		sa = self.assertEqual
+
+		l = [23, 12, 12, 12, 1, 5]
+		sl = sorted(l)
+		sorting.bucket_sort(l, 2)
+		sa(sl, l)
+
+		for i in range(1,100):
+			sa = self.assertEqual
+			ri = random.randint(10,100)
+			l = self.random_list(ri, 0, 120)
+			sl = sorted(l)
+			sorting.bucket_sort(l, 5)
+			sa(sl, l)
+
+		for i in range(1,100):
+			sa = self.assertEqual
+			ri = random.randint(10,100)
+			l = self.random_list(ri, 0, 120)
+			sl = sorted(l)
+			sorting.bucket_sort(l, 6)
+			sa(sl, l)
+
+	def test_count_sort(self):
+		sa = self.assertEqual
+
+		l = [23, 12, 12, 12, 1, 5]
+		sl = sorted(l)
+		sorting.count_sort(l)
+		sa(sl, l)
+
+		for i in range(1,100):
+			sa = self.assertEqual
+			l = self.random_list(random.randint(10,100), 0, 120)
+			sl = sorted(l)
+			sorting.count_sort(l)
+			sa(sl, l)
 
 	def test_merge(self):
 		sa = self.assertEqual
@@ -123,6 +177,12 @@ class SortTest(unittest.TestCase):
 		sorting.qsort(l, 0, len(l))
 		sa(l, sorted(l))
 
+		for i in range(1,100):
+			sa = self.assertEqual
+			l = self.random_list(random.randint(10,100))
+			sl = sorted(l)
+			sorting.qsort(l, 0, len(l))
+			sa(sl, l)
 
 class ChangeTest(unittest.TestCase):
 	def test_change(self):
