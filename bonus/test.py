@@ -71,6 +71,12 @@ class TestBitMan(unittest.TestCase):
 		sa(bitman.msb(123, 3), [1, 1, 1])
 		sa(bitman.msb(3423, 4), [1, 1, 0, 1])
 
+	def test_set_bits(self):
+		sa = self.assertEqual
+		sa(bitman.set_bits(0b1001, 0b11, 1, 2), 0b1111)
+		sa(bitman.set_bits(0b100, 0b11, 1, 2), 0b110)
+		sa(bitman.set_bits(0b10000000000, 0b10101, 2, 6), 0b10001010100)
+
 class SortTest(unittest.TestCase):
 	def random_list(self, n=10, min=-1000, max=1000):
 		l = []
